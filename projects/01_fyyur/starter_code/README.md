@@ -28,11 +28,11 @@ Our tech stack will include the following:
  * **Flask-Migrate** for creating and running schema migrations
 You can download and install the dependencies mentioned above using `pip` as:
 ```
-pip install virtualenv
-pip install SQLAlchemy
-pip install postgres
-pip install Flask
-pip install Flask-Migrate
+pip3 install virtualenv
+pip3 install SQLAlchemy
+pip3 install postgres
+pip3 install Flask
+pip3 install Flask-Migrate
 ```
 > **Note** - If we do not mention the specific version of a package, then the default latest stable package will be installed. 
 
@@ -181,3 +181,7 @@ python3 app.py
 6. **Verify on the Browser**<br>
 Navigate to project homepage [http://127.0.0.1:5000/](http://127.0.0.1:5000/) or [http://localhost:5000](http://localhost:5000) 
 
+pip install Flask --upgrade
+pip install Flask-SQLAlchemy --upgrade
+pip install Flask-WFT --upgrade
+pip install Flask-Moment -—upgrade
