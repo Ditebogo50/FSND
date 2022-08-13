@@ -35,65 +35,7 @@ migrate = Migrate(app, db) #link migrate to our flask app
 # Models.
 #----------------------------------------------------------------------------#
 
-# #association table with extra data
-# class Show(db.Model):
-#    __tablename__ = 'show'
-#    venue_id = db.Column('venue_id', db.Integer, db.ForeignKey('venue.id'), primary_key=True)
-#    artist_id = db.Column('artist_id', db.Integer, db.ForeignKey('artist.id'), primary_key=True)
-#    start_time = db.Column(db.DateTime, nullable=False)
-
-
-# class Venue(db.Model):
-#     __tablename__ = 'venue'
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String)
-#     city = db.Column(db.String(120))
-#     state = db.Column(db.String(120))
-#     address = db.Column(db.String(120))
-#     image_link = db.Column(db.String(500))
-#     facebook_link = db.Column(db.String(120))
-
-#     #added columns/fields
-#     #phone
-#     phone = db.Column(db.String(120))
-#     #genres
-#     genres = db.Column(db.String)
-#     #website_link
-#     website_link = db.Column(db.String())
-#     #seeking_talent
-#     seeking_talent = db.Column(db.Boolean)
-#     #seeking_description
-#     seeking_description = db.Column(db.String())
-
-#     #model relationships and properties
-#     artists = db.relationship('Artist', secondary='show', backref=db.backref('venues', lazy=True))
-
-
-#     # TODO: implement any missing fields, as a database migration using Flask-Migrate
-
-# class Artist(db.Model):
-#     __tablename__ = 'artist'
-
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String)
-#     city = db.Column(db.String(120))
-#     state = db.Column(db.String(120))
-#     phone = db.Column(db.String(120))
-#     genres = db.Column(db.String(120))
-#     image_link = db.Column(db.String(500))
-#     facebook_link = db.Column(db.String(120))
-
-#     #added columns/fields
-#     #website_link
-#     website_link = db.Column(db.String())
-#     #seeking_venue
-#     seeking_venue = db.Column(db.Boolean)
-#     #seeking_description
-#     seeking_description = db.Column(db.String())
-
-
-
+   # TODO: implement any missing fields, as a database migration using Flask-Migrate
 
     # TODO: implement any missing fields, as a database migration using Flask-Migrate
 
@@ -212,8 +154,6 @@ def search_venues():
 def show_venue(venue_id):
   # shows the venue page with the given venue_id
   # TODO: replace with real venue data from the venues table, using venue_id
-  # shows = Show.query.join(Venue, Artist).with_entities(Show.venue_id,
-  # Venue.name.label('v_name'),Show.artist_id,Artist.name.label('a_name'),Artist.image_link.label('a_link'),Show.start_time).all()
   venue = Venue.query.get(venue_id)
 
 
@@ -764,7 +704,6 @@ def shows():
   # TODO: replace with real venues data.
   shows = Show.query.join(Venue, Artist).with_entities(Show.venue_id,
   Venue.name.label('v_name'),Show.artist_id,Artist.name.label('a_name'),Artist.image_link.label('a_link'),Show.start_time).all()
-  # shows = Show.query.all()
   data = []
   for show in shows:
     data.append({
@@ -775,31 +714,6 @@ def shows():
       "artist_image_link": show.a_link,
       "start_time": str(show.start_time)
     })
-
-  # for show in shows:
-  #   showdict = {
-  #   "venue_id": show.venue_id,
-  #   "venue_name": show.v_name,
-  #   "artist_id": show.artist_id,
-  #   "artist_name": show.a_name,
-  #   "artist_image_link": show.artist.image_link,
-  #   "start_time": str(show.start_time)
-  #   }
-  #   data.append(showdict)
-
-
-
-
-
-    # data.append({
-    #   "venue_id": show.venue_id,
-    #   "venue_name": show.venue.name,
-    #   "artist_id": show.artist_id,
-    #   "artist_name": show.artist.name,
-    #   "artist_image_link": show.artist.image_link,
-    #   "start_time": str(show.start_time)
-    # })
-
 
   # data=[{
   #   "venue_id": 1,
